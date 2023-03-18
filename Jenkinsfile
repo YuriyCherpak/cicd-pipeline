@@ -13,8 +13,7 @@ pipeline {
     stage('build') {
       steps {
         script {
-          cd /scripts
-          sh build.sh
+          sh /scripts/build.sh
         }
 
       }
