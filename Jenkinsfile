@@ -5,6 +5,7 @@ pipeline {
       steps {
         script {
           checkout scm
+          def customImage = docker.build("${registry}:${env.BUILD_ID}")
         }
 
       }
@@ -19,5 +20,8 @@ pipeline {
       }
     }
 
+  }
+  environment {
+    registry = 'yucherpak/flask'
   }
 }
