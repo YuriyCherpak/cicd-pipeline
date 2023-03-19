@@ -15,7 +15,7 @@ pipeline {
       steps {
         script {
           docker.image("${registry}:${env.BUILD_ID}").inside {c ->
-          sh 'ls -la scripts/'
+          sh 'cd scripts'
           sh 'scripts/build.sh'
         }
       }
@@ -26,5 +26,6 @@ pipeline {
 }
 environment {
   registry = 'yucherpak/js-app'
+  LAUNCH_DIAGNOSTICS = 'true'
 }
 }
