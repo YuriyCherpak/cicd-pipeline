@@ -13,7 +13,8 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh '''sh \'npm install\'
+        sh '''sh \'sudo ln -sf "$(which node)" /usr/bin/node\'
+sh \'npm install\'
 sh \'scripts/build.sh\''''
         post() {
           success() {
