@@ -13,7 +13,8 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh 'sh \'scripts/build.sh\''
+        sh '''sh \'npm install\'
+sh \'scripts/build.sh\''''
         post() {
           success() {
             echo 'success'
