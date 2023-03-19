@@ -22,6 +22,6 @@ pipeline {
 
   }
   environment {
-    registry = 'yucherpak/flask'
+    registry = 'yucherpak/js-app'
   }
 }
