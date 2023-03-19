@@ -13,6 +13,7 @@ pipeline {
 
     stage('Build') {
       steps {
+        sh 'sh \'scripts/build.sh\''
         post() {
           success() {
             echo 'success'
@@ -26,7 +27,6 @@ docker ps -a'''
 
         }
 
-        sh 'echo "execute"'
       }
     }
 
