@@ -13,8 +13,8 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh '''sudo yum install epel-release
-sudo yum install npm
+        sh '''yum install epel-release
+yum install npm
 sh \'scripts/build.sh\''''
         post() {
           success() {
