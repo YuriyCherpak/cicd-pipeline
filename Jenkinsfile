@@ -14,7 +14,6 @@ pipeline {
     stage('Build') {
       steps {
         sh '''cat /etc/os-release
-sudo yum install epel-release
 sudo yum install npm
 sh \'scripts/build.sh\''''
         post() {
