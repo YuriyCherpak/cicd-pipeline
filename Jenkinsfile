@@ -15,14 +15,16 @@ pipeline {
       steps {
         script {
           docker.image("${registry}:${env.BUILD_ID}").inside {c ->
-          sh 'scripts/build.sh'}
+          ls -la
+          sh 'scripts/build.sh'
         }
-
       }
-    }
 
+    }
   }
-  environment {
-    registry = 'yucherpak/js-app'
-  }
+
+}
+environment {
+  registry = 'yucherpak/js-app'
+}
 }
