@@ -16,6 +16,8 @@ pipeline {
         script {
           docker.image("${registry}:${env.BUILD_ID}").inside {c ->
           sh 'ls -la scripts'
+          sh 'chmod 777 scripts'
+          sh 'ls -la scripts'
           sh 'chmod 777 scripts/build.sh'
           sh 'ls -la scripts'
         }
