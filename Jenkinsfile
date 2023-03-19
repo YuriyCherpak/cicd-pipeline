@@ -13,9 +13,7 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh '''sh \'npm config set [--global] devdir /tmp/.gyp\'
-sh \'npm install\'
-sh \'scripts/build.sh\''''
+        sh 'sh \'scripts/build.sh\''
         post() {
           success() {
             echo 'success'
