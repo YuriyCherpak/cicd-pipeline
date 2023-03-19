@@ -14,7 +14,7 @@ pipeline {
     stage('build') {
       steps {
         script {
-          sh /scripts/build.sh
+          ls -la
         }
 
       }
