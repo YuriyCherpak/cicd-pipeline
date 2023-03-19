@@ -3,9 +3,6 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        sh '''docker stop $(docker ps -a -q)
-docker rm $(docker ps -a -q)
-docker ps -a'''
         script {
           checkout scm
           def customImage = docker.build("${registry}:${env.BUILD_ID}")
@@ -23,16 +20,20 @@ docker ps -a'''
           sh "sh scripts/build.sh"
         }
       }
-      post {
-        success {
+
+      post() {
+        success() {
           echo 'success'
         }
-        failure {
-           sh '''docker stop $(docker ps -a -q)
+
+        failure() {
+          sh '''docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
 docker ps -a'''
         }
+
       }
+
     }
   }
 
