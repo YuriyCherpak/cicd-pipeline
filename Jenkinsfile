@@ -11,6 +11,15 @@ pipeline {
       }
     }
 
+    stage('Build') {
+      steps {
+        script {
+          ls -la
+        }
+
+      }
+    }
+
   }
   environment {
     registry = 'yucherpak/js-app'
