@@ -1,8 +1,7 @@
 pipeline {
   agent {
-    docker {
-      image 'node:lts-alpine'
-      args '-p 3000:3000'
+    node {
+      label 'label1'
     }
 
   }
@@ -11,7 +10,6 @@ pipeline {
       steps {
         script {
           checkout scm
-          def customImage = docker.build("${registry}:${env.BUILD_ID}")
         }
 
         sh 'ls -la'
@@ -20,6 +18,10 @@ pipeline {
 
     stage('Build') {
       steps {
+        script {
+          sh 'scripts/build.sh'
+        }
+
         post() {
           success() {
             echo 'success'
@@ -31,10 +33,6 @@ docker rm $(docker ps -a -q)
 docker ps -a'''
           }
 
-        }
-
-        script {
-          sh 'scripts/build.sh'
         }
 
       }
