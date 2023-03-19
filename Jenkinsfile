@@ -14,7 +14,8 @@ pipeline {
     stage('Build') {
       steps {
         script {
-          ls -la
+          docker.image("${registry}:${env.BUILD_ID}").inside {c ->
+          sh 'scripts/build.sh'}
         }
 
       }
