@@ -13,8 +13,9 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh '''yum install epel-release
-yum install npm
+        sh '''cat /etc/os-release
+sudo yum install epel-release
+sudo yum install npm
 sh \'scripts/build.sh\''''
         post() {
           success() {
@@ -35,6 +36,5 @@ docker ps -a'''
   }
   environment {
     registry = 'yucherpak/js-app'
-    LAUNCH_DIAGNOSTICS = 'true'
   }
 }
