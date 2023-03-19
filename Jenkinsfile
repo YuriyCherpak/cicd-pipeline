@@ -13,7 +13,11 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh '''sh \'sudo ln -sf "$(which node)" /usr/bin/node\'
+        sh '''env.NODEJS_HOME = "${tool node7}"
+env.PATH="${env.NODEJS_HOME}:${env.PATH}"
+echo ${env.PATH}
+sh \'node -version\'
+sh \'sudo ln -sf "$(which node)" /usr/bin/node\'
 sh \'npm install\'
 sh \'scripts/build.sh\''''
         post() {
