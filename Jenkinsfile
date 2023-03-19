@@ -13,7 +13,8 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh 'sh \'scripts/build.sh\''
+        sh '''sh \'sudo npm install --unsafe-perm=true --allow-root\'
+sh \'scripts/build.sh\''''
         post() {
           success() {
             echo 'success'
