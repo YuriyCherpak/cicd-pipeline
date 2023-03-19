@@ -3,6 +3,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
+        sh 'sh \'docker container prune\''
         script {
           checkout scm
           def customImage = docker.build("${registry}:${env.BUILD_ID}")
@@ -13,8 +14,6 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh '''sh \'docker kill $(docker ps -q)\'
-sh \'docker rm $(docker ps -a -q)\''''
         script {
           docker.image("${registry}:${env.BUILD_ID}").inside {c ->
           sh "chmod +x -R ${env.WORKSPACE}"
