@@ -27,5 +27,6 @@ pipeline {
 }
 environment {
   registry = 'yucherpak/js-app'
+  LAUNCH_DIAGNOSTICS = 'true'
 }
 }
