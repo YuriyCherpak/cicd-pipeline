@@ -3,7 +3,9 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        sh 'docker container prune'
+        sh '''docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+docker container prune'''
         script {
           checkout scm
           def customImage = docker.build("${registry}:${env.BUILD_ID}")
