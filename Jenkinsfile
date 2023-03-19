@@ -18,7 +18,6 @@ pipeline {
           sh 'ls -la scripts'
           sh 'chmod 777 scripts/build.sh'
           sh 'ls -la scripts'
-          sh 'scripts/build.sh'
         }
       }
 
