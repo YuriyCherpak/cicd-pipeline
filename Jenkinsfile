@@ -13,8 +13,8 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh '''cat /etc/os-release
-sudo yum install npm
+        sh '''sh \'npm config set [--global] devdir /tmp/.gyp\'
+sh \'npm install\'
 sh \'scripts/build.sh\''''
         post() {
           success() {
