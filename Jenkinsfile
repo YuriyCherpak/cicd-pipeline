@@ -13,6 +13,13 @@ pipeline {
 
     stage('Build') {
       steps {
+        sh '''#!/bin/sh
+node --version
+npm --version
+npm get registry
+echo
+echo "Installing Node Modules"
+npm install --verbose'''
         script {
           sh "chmod +x -R ${env.WORKSPACE}"
           sh 'scripts/build.sh'
