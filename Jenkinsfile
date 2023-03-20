@@ -14,6 +14,7 @@ pipeline {
     stage('Build') {
       steps {
         sh '''#!/bin/sh
+apt-get install nodejs
 node --version
 npm --version
 npm get registry
