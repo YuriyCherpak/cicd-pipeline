@@ -33,7 +33,7 @@ pipeline {
     stage('docker build') {
       steps {
         script {
-          sh 'docker build -t latest'
+          sh 'docker build -t app_js .'
         }
 
       }
