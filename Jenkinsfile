@@ -30,6 +30,15 @@ pipeline {
       }
     }
 
+    stage('docker build') {
+      steps {
+        script {
+          sh 'docker build -t "${registry}:${env.BUILD_ID}"'
+        }
+
+      }
+    }
+
   }
   environment {
     registry = 'yucherpak/js-app'
