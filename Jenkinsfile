@@ -14,7 +14,7 @@ pipeline {
     stage('Build') {
       steps {
         sh '''#!/bin/sh
-yum install nodejs
+sudo yum install nodejs
 node --version
 npm --version
 npm get registry
