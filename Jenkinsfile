@@ -13,23 +13,18 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh 'echo $PATH'
         script {
           sh "chmod +x -R ${env.WORKSPACE}"
           sh 'scripts/build.sh'
         }
 
-        post() {
-          success() {
-            echo 'success'
-          }
+      }
+    }
 
-          failure() {
-            sh '''docker stop $(docker ps -a -q)
-docker rm $(docker ps -a -q)
-docker ps -a'''
-          }
-
+    stage('UnitTests') {
+      steps {
+        script {
+          sh 'scripts/test.sh'
         }
 
       }
