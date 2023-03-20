@@ -13,14 +13,7 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh '''#!/bin/sh
-sudo -S yum -y install nodejs
-node --version
-npm --version
-npm get registry
-echo
-echo "Installing Node Modules"
-npm install --verbose'''
+        sh 'echo $PATH'
         script {
           sh "chmod +x -R ${env.WORKSPACE}"
           sh 'scripts/build.sh'
