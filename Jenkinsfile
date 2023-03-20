@@ -35,7 +35,19 @@ pipeline {
     stage('docker build') {
       steps {
         script {
-          sh 'docker build -t app_js .'
+          sh "docker build -t ${registry}:${env.BUILD_ID} ."
+        }
+
+      }
+    }
+
+    stage('Push') {
+      steps {
+        script {
+          docker.withRegistry('', 'docker-hub') {
+            docker.image("${registry}:${env.BUILD_ID}").push('latest')
+            docker.image("${registry}:${env.BUILD_ID}").push("${env.BUILD_ID}")
+          }
         }
 
       }
