@@ -7,7 +7,6 @@ pipeline {
           checkout scm
         }
 
-        sh 'ls -la'
       }
     }
 
@@ -22,17 +21,16 @@ pipeline {
       }
     }
 
-    stage('UnitTests') {
+    stage('Test') {
       steps {
         script {
           sh 'scripts/test.sh'
-          sh 'ls -la'
         }
 
       }
     }
 
-    stage('docker build') {
+    stage('Docker Build') {
       steps {
         script {
           sh "docker build -t ${registry}:${env.BUILD_ID} ."
