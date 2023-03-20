@@ -16,6 +16,7 @@ pipeline {
         script {
           sh "chmod +x -R ${env.WORKSPACE}"
           sh 'scripts/build.sh'
+          sh 'ls -la'
         }
 
       }
@@ -25,6 +26,7 @@ pipeline {
       steps {
         script {
           sh 'scripts/test.sh'
+          sh 'ls -la'
         }
 
       }
